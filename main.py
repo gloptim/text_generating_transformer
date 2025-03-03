@@ -23,7 +23,7 @@ def main():
 		lr = 1e-4)
 	
 	# Train 
-	tgt.train(epochs=1, plot=True, verbose = 2, print_every = 128)
+	tgt.train(epochs=10, plot=True, verbose = 2, print_every = 128)
 	
 	# Generate and print
 	text = tgt.generate(seed = 'Yes, master, tell me ', size=128, temperature=1.1)
