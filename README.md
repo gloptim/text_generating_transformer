@@ -1,15 +1,15 @@
 # Text generating transformer
-Decoder-only transformer, simplest character-level tokenization, training and text generation. 
+This is a decoder-only transformer with simplest character-level tokenization. Script has model training and text generation examples. 
 # How to use:
-1) Install dependences:
+## 1) Install dependences:
 ```
 pip install numpy torch torchinfo matplotlib
 ```
-2) Configure:
+## 2) Configure:
 ```
 # main.py
 
-# configure training
+# configure model
 
 tgt = MyTGT(data, 
 		path = 'model.pt',   # path to the model, to train new model you have to delete the previous one
@@ -21,13 +21,21 @@ tgt = MyTGT(data,
 		d_ffn = 512,         # ibid
 		lr = 1e-4)           # learning rate, higher values provide fast but worse generalization
 
+# configure training
+
+# epochs, higher value means longer training time and usually better results
+tgt.train(epochs = 30, plot=True, verbose = 2, print_every = 128)
+
 # configure generation
 
-# place any text in seed to generate next size symbols, ensure that seed is smaller than context size
+# place any text in seed to generate next 'size' symbols, ensure that seed is smaller than context size
 text = tgt.generate(seed = 'Yes, master, tell me ', size=128, temperature=1.1)
-
 ```
-3) Train and generate:
+## 3) Run:
 ```
 python main.py
 ```
+## 4) Training process:
+![Epoch/loss graph](assets/graph.png)
+## 5) Results:
+![Generated text](assets/results.png)
