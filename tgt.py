@@ -21,9 +21,6 @@ from loss import MyLoss
 device = None
 
 # TGT - Text Generating Transformer 
-# 1) Load data or model
-# 2) Train model 
-# 3) Generate text
 class MyTGT():
 
 	def __init__(self, data = None, path = None, context_size = 128, batch_size = 64, d_model = 512, n_heads = 4, n_layers = 3, d_ffn = 512, lr = 3e-4):
@@ -214,7 +211,7 @@ class MyTGT():
 				# Convert seed and reshape
 				seed_tensor = torch.tensor(seed_token, dtype=torch.int32).to(device=torch.device(device)).reshape([1, -1])
 				# Padding
-				seed_tensor = nn.functional.pad(seed_tensor, (0, self.context_size - seed_tensor.shape[-1]), value = self.tokenizer.padding_token)
+				seed_tensor = nn.functional.pad(seed_tensor, (self.context_size - seed_tensor.shape[-1], 0), value = self.tokenizer.padding_token)
 
 				# Get probs, div by temperature to increase entropy
 				probs = self.model(x = seed_tensor).reshape([-1, len(self.vocab)])[-1] / temperature
