@@ -96,9 +96,10 @@ class MyTGT():
 
 		# Load
 		if path:
-			checkpoint = torch.load(path, weights_only=True)
-			self.model.load_state_dict(checkpoint['model_state_dict'])
-			self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+			if os.path.exists(path):
+				checkpoint = torch.load(path, weights_only=True)
+				self.model.load_state_dict(checkpoint['model_state_dict'])
+				self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
 
 		print('-'*96)
 
