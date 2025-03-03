@@ -26,7 +26,7 @@ def main():
 	tgt.train(epochs=10, plot=True, verbose = 2, print_every = 128)
 	
 	# Generate and print
-	text = tgt.generate(seed = 'Yes, master, tell me ', size=128, temperature=1.1)
+	text = tgt.generate(seed = 'Yes, master, tell me ', size=1024, temperature=1.1)
 	print(text)
 
 if __name__ == '__main__':
