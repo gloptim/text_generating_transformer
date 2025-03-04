@@ -1,11 +1,9 @@
-import os
-os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 from tgt import MyTGT
 
 def main():
 
 	# Open file with text
-	file = open('nn/gen/text/text.txt')
+	file = open('text.txt')
 	# Get text data for training
 	data = file.read()
 	# Select a part for learning (optional)
